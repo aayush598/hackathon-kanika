@@ -8,14 +8,14 @@ while True:
     data = {
         "heartRate": random.randint(60, 100),
         "spO2": random.randint(95, 100),
-        "temperature": round(random.uniform(35.5, 39.0), 2)
+        "temperature": round(random.uniform(36.0, 38.5), 2)
     }
-    
+
     response = requests.post(SERVER_URL, json=data)
     
-    if response.status_code == 200:
-        print(f"Sent: {data}")
+    if response.status_code == 201:
+        print("Sent:", data)
     else:
-        print(f"Failed to send data: {response.status_code}")
+        print("Failed to send data:", response.text)
 
     time.sleep(5)  # Send data every 5 seconds
